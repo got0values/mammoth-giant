@@ -60,7 +60,6 @@ export const ProductsProvider = ({ children }) => {
 
             for (let i = 0; i < products.length; i++) {
                 if (products[i].id === idParam) {
-                    console.log(products[i])
                     var singleProduct = products[i];
                 }
             }
