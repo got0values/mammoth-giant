@@ -1,12 +1,13 @@
 import React from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import { Navbar, Sidebar, Footer } from './components'
-import styled from 'styled-components'
+// import styled from 'styled-components'
 
-import { Home, SingleProduct, Cart, Checkout, Error, About, Products, PrivateRoute } from './pages'
+import { Home, SingleProduct, Cart, Checkout, Error, About, Products, PrivateRoute, AuthWrapper } from './pages'
 
 function App() {
   return (
+    <AuthWrapper>
     <Router>
     <Navbar/>
     <Sidebar/>
@@ -24,15 +25,16 @@ function App() {
                 <Products />
             </Route>
             <Route exact path='/products/:id' children={<SingleProduct />} />
-            <Route exact path='/checkout'>
+            <PrivateRoute exact path='/checkout'>
                 <Checkout />
-            </Route>
+            </PrivateRoute>
             <Route exact path='*'>
                 <Error />
             </Route>
         </Switch>
     <Footer/>
     </Router>
+    </AuthWrapper>
   )
 }
 

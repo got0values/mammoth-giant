@@ -8,13 +8,25 @@ import { CartProvider } from './context/cart_context'
 import { UserProvider } from './context/user_context'
 import { Auth0Provider } from '@auth0/auth0-react'
 
+const authDomain = `${process.env.REACT_APP_AUTH_DOMAIN}`;
+const authClientid = `${process.env.REACT_APP_AUTH_CLIENTID}`;
+
 ReactDOM.render(
-    <ProductsProvider>
-        <FilterProvider>
-            <CartProvider>
-                <App/>
-            </CartProvider>
-        </FilterProvider>
-    </ProductsProvider>, 
+    <Auth0Provider 
+    domain={authDomain}
+    clientId={authClientid}
+    redirectUri={window.location.origin} 
+    cacheLocation='localstorage'
+    >
+        <UserProvider>
+            <ProductsProvider>
+                <FilterProvider>
+                    <CartProvider>
+                        <App/>
+                    </CartProvider>
+                </FilterProvider>
+            </ProductsProvider>
+        </UserProvider>
+    </Auth0Provider>,
     document.getElementById('root')
 )

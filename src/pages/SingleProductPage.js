@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useParams, useHistory } from 'react-router-dom'
 import { useProductsContext } from '../context/products_context'
-import { single_product_url as url } from '../utils/constants'
+// import { single_product_url as url } from '../utils/constants'
 import { formatPrice } from '../utils/helpers'
 import {
   Loading,
@@ -13,7 +13,7 @@ import {
 } from '../components'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
-import products_reducer from '../reducers/products_reducer'
+// import products_reducer from '../reducers/products_reducer'
 
 const SingleProductPage = () => {
     //destructured single product data then fetch single product data
@@ -22,6 +22,7 @@ const SingleProductPage = () => {
     const {single_product_loading: loading, single_product_error: error, single_product: product, fetchSingleProduct} = useProductsContext();
     useEffect(()=> {
         fetchSingleProduct(`${id}`)
+        // eslint-disable-next-line
     }, [id])
 
     //if there's an error, go back to last page in 3 seconds
@@ -31,6 +32,7 @@ const SingleProductPage = () => {
             history.push('/') //goes back to last page
             }, 3000)
         }
+        // eslint-disable-next-line
     }, [error])
 
     //if loading, return loading component
