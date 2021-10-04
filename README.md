@@ -1,3 +1,9 @@
+# Mammoth-Giant
+
+This is a demo e-commerce site made with React.
+
+It includes a useful filter and sorting page for your products.
+
 ## Notes
 
 #### Older React Version
